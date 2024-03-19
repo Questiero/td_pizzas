@@ -1,51 +1,29 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 
-import './components/PizzaTile'
-import PizzaTile from "./components/PizzaTile";
+import Login from "./components/Login"
+import PizzaCatalogue from "./components/PizzaCatalogue";
 
 function App() {
   
-  const [pizzas, setPizzas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    async function loadPizzas() {
-
-      const api = "https://pizzas.shrp.dev/items/pizzas?sort=name";
-
-      try {
-
-        setIsLoading(true);
-        setIsError(false);
-
-        const response = await axios.get(api);
-
-        const data = await response.data.data;
-
-        setPizzas(data);
-        setIsLoading(false);
-        setIsError(false);
-
-      } catch (error) {
-        setIsError(true);
-        setIsLoading(false);
-        console.error(error);
-      }
-    }
-
-    loadPizzas();
-
-  }, []);
+  const buttons = ["Catalogue", "Connexion"]
+  const [main, setMain] = useState(buttons[0]);
 
   return (
     <div className="App">
-      {isLoading && <p>Chargement...</p>}
-      {isError && <p>Une erreur s'est produite</p>}
-      {pizzas.map((pizza) => (
-        <PizzaTile key={pizza.id} pizza={pizza}></PizzaTile>
-      ))}
+
+      <div className="header">
+          {buttons.map((btn) => (
+              <button key={btn} onClick={() => setMain(btn)}>
+                  {btn}
+              </button>
+          ))}
+      </div>
+
+      <div className="main">
+        {main === "Catalogue" && <PizzaCatalogue></PizzaCatalogue>}
+        {main === "Connexion" && <Login></Login>}
+      </div>
+
     </div>
   );
 }
