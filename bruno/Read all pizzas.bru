@@ -1,0 +1,16 @@
+meta {
+  name: Read all pizzas
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://pizzas.shrp.dev/items/pizzas?filter[base][_eq]=Tomate&filter[price][_eq]=12
+  body: none
+  auth: none
+}
+
+query {
+  filter[base][_eq]: Tomate
+  filter[price][_eq]: 12
+}
