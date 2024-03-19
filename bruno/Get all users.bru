@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: https://pizzas.shrp.dev/users
+  url: https://pizzas.shrp.dev/users?sort=-last_access
   body: none
   auth: none
+}
+
+query {
+  sort: -last_access
 }

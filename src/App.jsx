@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import './components/PizzaPreview'
-import PizzaPreview from "./components/PizzaPreview";
+import './components/PizzaTile'
+import PizzaTile from "./components/PizzaTile";
 
 function App() {
   
@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     async function loadPizzas() {
 
-      const api = "https://pizzas.shrp.dev/items/pizzas";
+      const api = "https://pizzas.shrp.dev/items/pizzas?sort=name";
 
       try {
 
@@ -44,8 +44,7 @@ function App() {
       {isLoading && <p>Chargement...</p>}
       {isError && <p>Une erreur s'est produite</p>}
       {pizzas.map((pizza) => (
-        //<div key={pizza.id}>{pizza.name}</div>
-        <PizzaPreview key={pizza.id} pizza={pizza}></PizzaPreview>
+        <PizzaTile key={pizza.id} pizza={pizza}></PizzaTile>
       ))}
     </div>
   );

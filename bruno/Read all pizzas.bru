@@ -5,12 +5,12 @@ meta {
 }
 
 get {
-  url: https://pizzas.shrp.dev/items/pizzas?filter[base][_eq]=Tomate&filter[price][_eq]=12
+  url: https://pizzas.shrp.dev/items/pizzas
   body: none
   auth: none
 }
 
 query {
-  filter[base][_eq]: Tomate
-  filter[price][_eq]: 12
+  ~filter[price][_eq]: 12
+  ~sort: base
 }

@@ -1,0 +1,23 @@
+.pizza-tile {
+  float: left;
+
+  height: 500px;
+	width: 300px;
+	padding: 14px;
+	margin: 14px;
+
+  text-align: center;
+  
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.pizza-price {
+  font-style: bold;
+  font-size:110%;
+}
+
+.pizza-ingredients {
+  font-style: italic;
+  font-size: 90%;
+}
